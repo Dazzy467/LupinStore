@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import SliderComponent from "@/Components/SliderComponent";
 import LupinNavbar from "@/Layouts/LupinNavbar";
 import ItemComponent from "@/Components/ItemComponent";
+import LupinFooter from "@/Layouts/LupinFooter";
 
 
 export default function Home({auth,kategori})
@@ -17,10 +18,10 @@ export default function Home({auth,kategori})
         setSelectedCat(child)
     };
     return (
-        <>
+        <div className="bg-slate-700 h-[100vh]">
             <Head title="Home" />
             <LupinNavbar/>
-            <div className="pt-[6rem] pb-[6rem]">
+            <div className="pt-[6rem] pb-[2rem] bg-white">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     
                 <SliderComponent id={"Cat-Slider"} stateSelect={catSelect} 
@@ -40,13 +41,14 @@ export default function Home({auth,kategori})
 
                 <div id="items-container" className="flex flex-wrap p-5 bg-slate-300 rounded">
                     {
-                        Array.from({length: 20}, (_,i) => <ItemComponent/>)
+                        Array.from({length: 20}, (_,i) => <ItemComponent key={i} />)
                     }
                 </div>
 
                 </div>
             </div>
-        </>
+            <LupinFooter className={"bg-slate-700"}/>
+        </div>
     )
 
 }
