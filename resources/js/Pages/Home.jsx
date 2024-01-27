@@ -20,7 +20,20 @@ export default function Home({auth,kategori})
     return (
         <div className="bg-slate-700 h-[100vh]">
             <Head title="Home" />
-            <LupinNavbar/>
+            <LupinNavbar className={"bg-blue-400"}>
+                <Link className="md:hover:text-blue-100 max-md:hover:text-blue-400">
+                    Home
+                </Link>
+                <Link className="md:hover:text-blue-100 max-md:hover:text-blue-400">
+                    Category
+                </Link>
+                <Link className="md:hover:text-blue-100 max-md:hover:text-blue-400">
+                    Search
+                </Link>
+                <Link className="md:hover:text-blue-100 max-md:hover:text-blue-400">
+                    Profile
+                </Link>
+            </LupinNavbar>
             <div className="pt-[6rem] pb-[2rem] bg-white">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     
@@ -39,7 +52,7 @@ export default function Home({auth,kategori})
                 </SliderComponent>
                 Selected: {selectedCat}
 
-                <div id="items-container" className="flex flex-wrap p-5 bg-slate-300 rounded">
+                <div id="items-container" className="flex flex-wrap p-5 gap-2 bg-slate-300 rounded">
                     {
                         Array.from({length: 20}, (_,i) => <ItemComponent key={i} />)
                     }

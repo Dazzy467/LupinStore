@@ -1,5 +1,5 @@
 import { Link } from "@inertiajs/react"
-export default function LupinNavbar()
+export default function LupinNavbar({children,className})
 {
     function openNavigation()
     {
@@ -8,8 +8,7 @@ export default function LupinNavbar()
     }
     return (
         <>
-            <div className="flex fixed justify-between w-[100%] bg-blue-400 p-4 ">
-                {/* <img src={}></img> */}
+            <div className={"flex fixed justify-between w-[100%] p-4 " + className}>
                 <div>
                     <svg fill="currentColor" version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="128pt" height="40" viewBox="0 0 2000.000000 1900.000000"
@@ -119,15 +118,9 @@ export default function LupinNavbar()
                 md:relative 
                 md:flex-row 
                 md:text-white md:w-auto max-md:pt-2 max-md:pb-2 max-md:ps-2 left-0 md:top-0 top-[100%] md:bg-inherit w-[100%] text-slate-700 bg-white flex flex-col absolute gap-5 md:items-center font-sans font-bold select-none max-md:hidden">
-                    <Link className="md:hover:text-blue-100 max-md:hover:text-blue-400">
-                        Home
-                    </Link>
-                    <Link className="md:hover:text-blue-100 max-md:hover:text-blue-400">
-                        Category
-                    </Link>
-                    <Link className="md:hover:text-blue-100 max-md:hover:text-blue-400">
-                        Search
-                    </Link>
+                    {
+                        children
+                    }
                 </div>
 
                 <div className="flex items-center md:hidden">

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BarangController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Kategori;
@@ -37,6 +39,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::group(['middleware' => ['auth:admin']],function(){
+    Route::get('admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+
+    // Barang controller
+    Route::post('admin/barang/store',[BarangController::class,'store'])->name('barang.store');
 });
 
 require __DIR__.'/auth.php';
