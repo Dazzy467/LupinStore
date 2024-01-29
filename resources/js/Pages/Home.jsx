@@ -7,16 +7,22 @@ import ItemComponent from "@/Components/ItemComponent";
 import LupinFooter from "@/Layouts/LupinFooter";
 
 
-export default function Home({auth,kategori})
+export default function Home({auth,barang,kategori})
 {
-
     const category = kategori.map(
         (el) => el.Kategori
     );
-    const [selectedCat,setSelectedCat] = useState()
+    const [selectedCat,setSelectedCat] = useState('Ganci');
     const catSelect = (child) => {
         setSelectedCat(child)
     };
+
+    const [catIndexSelected, setCatIndex] = useState(1);
+    
+    useEffect(()=>{
+        const tempKat = kategori.find((item)=> item.Kategori === selectedCat)
+        setCatIndex(tempKat.id);
+    },[selectedCat]);
     return (
         <div className="bg-slate-700 h-[100vh]">
             <Head title="Home" />
@@ -50,11 +56,15 @@ export default function Home({auth,kategori})
                         )
                     }
                 </SliderComponent>
-                Selected: {selectedCat}
 
                 <div id="items-container" className="flex flex-wrap p-5 gap-2 bg-slate-300 rounded">
                     {
-                        Array.from({length: 20}, (_,i) => <ItemComponent key={i} />)
+                        barang.map(
+                            (item,i) =>
+                            <ItemComponent key={i} item={item} kategori={kategori} className={
+                                (catIndexSelected === item.Kategori)? 'visible' : 'hidden'
+                            }/>
+                        )
                     }
                 </div>
 

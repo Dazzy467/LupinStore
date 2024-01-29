@@ -1,20 +1,24 @@
-export default function ItemComponent({item})
+export default function ItemComponent({item,kategori,className})
 {
+    const fKategori = kategori.find((it) => it.id === item.Kategori);
     return (
         <>
-            <div className="rounded bg-white w-[120px]">
-                <div className="flex items-center justify-center w-auto h-[100px] bg-slate-500 text-center rounded">
-                    Contoh gambar
+            <div className={"rounded bg-white w-[120px] " + className}>
+                <div className="flex items-center justify-center w-auto h-[100px] overflow-hidden bg-slate-500 text-center rounded">
+                    {/* Contoh gambar */}
+                    <img src={"/storage/images/"+item.id+"/"+item.img_path} className="object-cover object-center h-[100%]" alt="" />
                 </div>
                 <div className="flex flex-col p-1">
                     <div className="font-bold overflow-auto">
-                        Nama barang
+                        {item.namaBarang}
                     </div>
                     <div className="" style={{fontSize:"0.8rem"}}>
-                        Rp.50000,00
+                        Rp.{item.hargaBarang.toLocaleString()}
                     </div>
-                    <div className="" style={{fontSize:"0.8rem"}}>
-                        ganci
+                    <div style={{fontSize:"0.8rem"}}>
+                        {
+                            fKategori? fKategori.Kategori : 'any'
+                        }
                     </div>
                 </div>
 
