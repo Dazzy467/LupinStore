@@ -46,6 +46,8 @@ Route::group(['middleware' => ['auth:admin']],function(){
 
     // Barang controller
     Route::post('admin/barang/store',[BarangController::class,'store'])->name('barang.store');
+    Route::post('admin/barang/edit/{id}',[BarangController::class,'updateProduct'])->name('barang.update');
+    Route::post('admin/barang/del',[BarangController::class,'destroy'])->name('barang.destroy');
 });
 
 require __DIR__.'/auth.php';

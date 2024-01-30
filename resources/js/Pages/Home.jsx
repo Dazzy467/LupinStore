@@ -61,9 +61,7 @@ export default function Home({auth,barang,kategori})
                     {
                         barang.map(
                             (item,i) =>
-                            <ItemComponent key={i} item={item} kategori={kategori} className={
-                                (catIndexSelected === item.Kategori)? 'visible' : 'hidden'
-                            }/>
+                            (catIndexSelected === item.Kategori)? <ItemComponent key={i} item={item} kategori={kategori}/> : ''
                         )
                     }
                 </div>
